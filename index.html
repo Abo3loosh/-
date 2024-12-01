@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة تسجيل</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مرحبًا بك في صفحة المستخدم</h1>
+        <button onclick="showCreateUser()">إنشاء حساب جديد</button>
+        <button onclick="showLogin()">تسجيل دخول</button>
+
+        <div id="createUserForm" class="hidden">
+            <h2>إنشاء حساب</h2>
+            <input type="text" id="newUsername" placeholder="اسم المستخدم">
+            <input type="password" id="newPassword" placeholder="كلمة المرور">
+            <button onclick="createUser()">إنشاء</button>
+        </div>
+
+        <div id="loginForm" class="hidden">
+            <h2>تسجيل دخول</h2>
+            <input type="text" id="loginUsername" placeholder="اسم المستخدم">
+            <input type="password" id="loginPassword" placeholder="كلمة المرور">
+            <button onclick="login()">دخول</button>
+        </div>
+    </div>
+
+    <script>
+        // إظهار نموذج إنشاء الحساب
+        function showCreateUser() {
+            document.getElementById('createUserForm').classList.remove('hidden');
+            document.getElementById('loginForm').classList.add('hidden');
+        }
+
+        // إظهار نموذج تسجيل الدخول
+        function showLogin() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('createUserForm').classList.add('hidden');
+        }
+
+        // إنشاء مستخدم جديد
+        function createUser() {
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+
+            if (username && password) {
+                localStorage.setItem(username, password); // تخزين بيانات المستخدم
+                alert('تم إنشاء الحساب بنجاح!');
+                document.getElementById('newUsername').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('createUserForm').classList.add('hidden');
+            } else {
+                alert('يرجى إدخال اسم المستخدم وكلمة المرور!');
+            }
+        }
+
+        // تسجيل الدخول
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const storedPassword = localStorage.getItem(username); // جلب كلمة المرور المخزنة
+
+            if (storedPassword && storedPassword === password) {
+                alert('تم تسجيل الدخول بنجاح!');
+                window.location.href = "welcome.html"; // الانتقال إلى الصفحة الترحيبية
+            } else {
+                alert('اسم المستخدم أو كلمة المرور غير صحيحة!');
+            }
+        }
+    </script>
+
+</body></html>

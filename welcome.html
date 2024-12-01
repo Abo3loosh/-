@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحبًا بك</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: #ff4b5c;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #d9374d;
+        }
+    </style>
+</head>
+<body>
+    <h1>مرحبًا بك في صفحتك الشخصية!</h1>
+    <button onclick="logout()">تسجيل خروج</button>
+
+    <script>
+        function logout() {
+            alert('تم تسجيل الخروج بنجاح!');
+            window.location.href = "index.html"; // العودة إلى الصفحة الرئيسية
+        }
+    </script>
+
+</body></html>
